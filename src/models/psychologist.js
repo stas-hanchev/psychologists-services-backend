@@ -1,7 +1,6 @@
-import { Schema } from 'mongoose';
-import { model } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-const PsychologistSchema = new Schema(
+const psychologistSchema = new Schema(
   {
     name: {
       type: String,
@@ -66,6 +65,8 @@ const PsychologistSchema = new Schema(
   },
 );
 
-teacherSchema.index({ name: 'text', rating: 1, price_per_hour: 1 });
+psychologistSchema.index({ name: 1, _id: 1 });
+psychologistSchema.index({ rating: 1, _id: 1 });
+psychologistSchema.index({ price_per_hour: 1, _id: 1 });
 
-export const Teacher = model('Psychologist', PsychologistSchema);
+export const Psychologist = model('Psychologist', psychologistSchema);

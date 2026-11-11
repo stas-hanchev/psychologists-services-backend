@@ -1,10 +1,10 @@
+import 'dotenv/config';
 import dns from 'node:dns';
 
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { errors } from "celebrate";
-import 'dotenv/config';
 
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { logger } from './middleware/logger.js';

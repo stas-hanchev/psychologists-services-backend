@@ -22,11 +22,19 @@ export const registerUser = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 12);
 
-  const newUser = await User.create({
-    name,
-    email,
-    password: hashedPassword,
-  });
+  let newUser;
+  try {
+    newUser = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+  } catch (err) {
+    if (err.code === 11000) {
+      throw createHttpError(409, 'Email in use');
+    }
+    throw err;
+  }
 
   const newSession = await createSession(newUser._id);
   setSessionCookies(res, newSession);

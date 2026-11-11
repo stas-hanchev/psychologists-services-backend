@@ -1,4 +1,3 @@
-// import { trusted } from 'mongoose';
 import { Psychologist } from '../models/psychologist.js';
 import createHttpError from 'http-errors';
 import { DEFAULT_PER_PAGE } from '../constants/pagination.js';
@@ -20,9 +19,9 @@ export const getPsychologists = async (req, res) => {
     Psychologist.countDocuments(),
 
     Psychologist.find()
+      .sort({ [sortBy]: sortOrder, _id: sortOrder })
       .skip(skip)
-      .limit(perPageNumber)
-      .sort({ [sortBy]: sortOrder }),
+      .limit(perPageNumber),
   ]);
 
   const totalPages = Math.ceil(totalItems / perPageNumber);

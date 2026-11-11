@@ -6,8 +6,8 @@ import { psychologistIdParamSchema, getPsychologistsSchema } from '../validation
 
 const router = Router();
 
-router.get('/teachers', celebrate(getPsychologistsSchema), getPsychologists);
+router.get('/psychologists', celebrate(getPsychologistsSchema), getPsychologists);
 
-router.get('/teachers/:teacherId', celebrate(psychologistIdParamSchema), getPsychologistById);
+router.get('/psychologists/:psychologistId', celebrate(psychologistIdParamSchema), getPsychologistById);
 
 export default router;

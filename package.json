@@ -2,8 +2,11 @@
   "name": "psychologists-services-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/server.js",
   "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,7 +14,7 @@
     "url": "git+https://github.com/stas-hanchev/psychologists-services-backend.git"
   },
   "keywords": [],
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/stas-hanchev/psychologists-services-backend/issues"
   },

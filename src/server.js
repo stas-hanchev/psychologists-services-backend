@@ -17,7 +17,14 @@ import authRoutes from './routes/authRoutes.js';
 import psychologistsRoutes from './routes/psychologistsRoutes.js';
 import favoritesRoutes from './routes/favoritesRoutes.js';
 
-dns.setServers(['1.1.1.1', '8.8.8.8']);
+const dnsServers = (process.env.DNS_SERVERS ?? '')
+  .split(',')
+  .map((server) => server.trim())
+  .filter(Boolean);
+
+if (dnsServers.length > 0) {
+  dns.setServers(dnsServers);
+}
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;

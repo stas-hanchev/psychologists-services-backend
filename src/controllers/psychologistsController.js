@@ -1,4 +1,4 @@
-import { trusted } from 'mongoose';
+// import { trusted } from 'mongoose';
 import { Psychologist } from '../models/psychologist.js';
 import createHttpError from 'http-errors';
 import { DEFAULT_PER_PAGE } from '../constants/pagination.js';

@@ -5,12 +5,12 @@ export const registerUserSchema = {
     name: Joi.string().trim().min(2).max(30).required(),
     email: Joi.string().trim().lowercase().email().max(254).required(),
     password: Joi.string().min(8).max(72).required(),
-  }),
+  }).required(),
 };
 
 export const loginUserSchema = {
   [Segments.BODY]: Joi.object({
     email: Joi.string().trim().lowercase().email().max(254).required(),
     password: Joi.string().max(72).required(),
-  }),
+  }).required(),
 };

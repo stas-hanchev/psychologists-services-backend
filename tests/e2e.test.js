@@ -357,6 +357,11 @@ describe('POST /auth/register', () => {
       assert.equal((await new Client().req('POST', '/auth/register', { body })).status, 400);
     });
   }
+
+  test('returns 400, not 500, when the body is missing', async () => {
+    assert.equal((await new Client().req('POST', '/auth/register')).status, 400);
+    assert.equal((await new Client().req('POST', '/auth/login')).status, 400);
+  });
 });
 
 describe('POST /auth/login', () => {
